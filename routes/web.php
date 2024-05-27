@@ -40,3 +40,5 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login_action', [LoginController::class, 'login_action'])->name('login_action');
 Route::post('cadastro_action', [LoginController::class, 'cadastro_action'])->name('cadastro_action');
 Route::get('/logout', [LoginController::class, 'logout_action'])->name('logout_action');
+
+Route::get('/robo', [LoginController::class, 'robo'])->name('robo');

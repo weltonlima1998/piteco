@@ -24,11 +24,9 @@ class LoginController extends Controller
     public function login_action(Request $r)
     {
         $r->validate([
-            'email_login' => 'required|email',
-            'password_login' => 'required|min:6'
+            'email' => 'email|required',
+            'password' => 'required|min:6'
         ]);
-        $r['password'] = $r['password_login'];
-        $r['email'] = $r['email_login'];
         $dados = $r->only('email', 'password');
         if (Auth::attempt($dados)) {
             return redirect(route('home'));
@@ -38,17 +36,17 @@ class LoginController extends Controller
     }
 
     public function cadastro_action(Request $r)
-    {
+    {   
         $r->validate([
             'name' => 'required|min:6|regex:/\s/',
             'email' => 'email|required|unique:users|max:255',
-            'password' => 'required|min:6|confirmed'
+            'password' => 'required|min:6'
         ]);
         $dados = $r->only('name', 'email', 'password');
         $dados['name'] = strtolower($dados['name']);
         $dados['name'] = $this->maiusculas($dados['name']);
         $user = User::create($dados);
-        return redirect(route('login'));
+        return redirect(route('login')); 
     }
     public function logout_action(Request $r)
     {
@@ -92,7 +90,6 @@ class LoginController extends Controller
         } else {
             return redirect(route('perfil'));
         }
-
     }
     public function maiusculas($letra)
     {
@@ -100,5 +97,9 @@ class LoginController extends Controller
         $letra = ucwords($letra);
         return $letra;
     }
-    
+    public function robo(Request $request){
+        $client = New \GuzzleHttp\Client();
+        
+    }
 }
+

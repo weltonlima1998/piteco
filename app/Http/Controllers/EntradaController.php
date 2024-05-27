@@ -23,8 +23,30 @@ class EntradaController extends Controller
 
     public function add_action(Request $r)
     {
-
         $r->validate([
+            'categoria_id' => 'integer|exists:categorias,id|required',
+            'valor' => 'required'
+        ]);
+        $r['valor'] = $this->reais($r['valor']);
+        echo $r->valor;
+
+        $user_id = Auth::user()->id;
+
+        $categoria = Categoria::findOrfail($r->categoria_id);
+
+        $dados = $r->only('categoria_id','valor');
+        $dados['user_id'] = $user_id;
+        if ($categoria->trans == 0) {
+            $saida = Saida::create($dados);
+            return redirect(route('add'))->with('mensagem', true);
+        }elseif($categoria->trans == 1){
+            $entrada = Entrada::create($dados);
+            return redirect(route('add'))->with('mensagem', true);
+        }else{
+            return redirect(route('add'));
+        }
+
+        /* $r->validate([
             'categoria_id' => 'integer|exists:categorias,id|required',
             'valor' => 'required'
         ]);
@@ -35,21 +57,21 @@ class EntradaController extends Controller
         $user_id = Auth::user();
         $user_id = $user_id->id;
 
-        if (!$r->has('fluxo')) { /*SAIDA*/
+        if (!$r->has('fluxo')) { 
             $dados = $r->all();
             $dados['user_id'] = $user_id;
             $dados['valor'] = $this->reais($r['valor']);
             $dados['categoria_id'] = intval($dados['categoria_id']);
             $saida = Saida::create($dados);
             return redirect(route('add'))->with('mensagem', true);
-        } else {/* ENTRADA*/
+        } else {
             $dados = $r->all();
             $dados['user_id'] = $user_id;
             $dados['valor'] = $this->reais($r['valor']);
             $dados['categoria_id'] = intval($dados['categoria_id']);
             $entrada = Entrada::create($dados);
             return redirect(route('add'))->with('mensagem', true);
-        }
+        } */
     }
     public function reais($r)
     {
@@ -109,16 +131,16 @@ class EntradaController extends Controller
         $id = $r->id;
         $tipo = $r->tipo;
         if ($this->validarId($id, $tipo)) {
-            if($tipo == 'saida'){
-              $saida = Saida::find($id);
-              $saida = $saida->delete();
-              return redirect(route('extrado'))->with('mensagem', true);
-            }else{
+            if ($tipo == 'saida') {
+                $saida = Saida::find($id);
+                $saida = $saida->delete();
+                return redirect(route('extrado'))->with('mensagem', true);
+            } else {
                 $entrada = Entrada::find($id);
                 $entrada = $entrada->delete();
                 return redirect(route('extrado'))->with('mensagem', true);
             }
-        }else{
+        } else {
             return redirect(route('home'));
         }
     }

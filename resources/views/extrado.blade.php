@@ -1,12 +1,6 @@
 <x-layout>
     <div class="container">
         <h1>{{ $mes }}</h1>
-        @if (session('mensagem'))
-            <div class="mensagem_sucesso" id="mensagem_sucesso">
-                <img src="{{asset('/assets/img/icons/sucesso.png')}}" alt="">
-                <p>Excluido com sucesso!</p>
-            </div>
-        @endif
         <div class="card">
             <ul class="extrado">
                 @foreach ($registros as $registro)
@@ -22,6 +16,12 @@
                     </li>
                 @endforeach
             </ul>
+            @if (session('mensagem'))
+            <div class="mensagem_sucesso" id="mensagem_sucesso">
+                <img src="{{asset('/assets/img/icons/sucesso.png')}}" alt="">
+                <p>Excluido com sucesso!</p>
+            </div>
+        @endif
         </div>
 
     </div>

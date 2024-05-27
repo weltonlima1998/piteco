@@ -15,24 +15,28 @@ class CategoriaController extends Controller
 
     public function categoria_action(Request $r)
     {
+        // Validação dos dados da requisição
         $r->validate([
-            'name' => 'required|string',
-            'descricao' => 'string|nullable'
+            'name' => 'required|string|min:3|max:35',
         ]);
 
-        $user = Auth::user();
+        // Obter o ID do usuário autenticado
+        $user = Auth::user()->id;
 
-        $dados = $r->only('name', 'descricao');
-        $dados['user_id'] = $user->id; // Incluindo o ID do usuário na array $dados
-        if ($dados['descricao'] == null) {
-            $dados['descricao'] = ' ';
-        }
-        $dados['name'] = strtolower($dados['name']);
-        $dados['name'] = ucwords($dados['name']);
+        // Preparar os dados para a nova Categoria
+        $dados['user_id'] = $user;
+        $dados['name'] = $r->name;
 
+        // Definir o valor para o campo 'trans' baseado no estado do checkbox 'fluxo'
+        $dados['trans'] = $r->has('fluxo') ? 1 : 0;
+
+        // Criar e salvar a nova Categoria
         $categoria = Categoria::create($dados);
-        return redirect(route('add'));
+
+        // Redirecionar para a rota 'add'
+        return redirect(route('categoria'))->with('mensagem', true);
     }
+
     public function reais($r)
     {
         $entrada = $r;
@@ -53,8 +57,8 @@ class CategoriaController extends Controller
     }
     public function gerenciar(Request $r)
     {
-        $user_id =Auth::user()->id;
-        $categorias = Categoria::where('user_id',$user_id)->get();
-        return view('gerenciar_categoria')->with('categorias',$categorias);
+        $user_id = Auth::user()->id;
+        $categorias = Categoria::where('user_id', $user_id)->get();
+        return view('gerenciar_categoria')->with('categorias', $categorias);
     }
 }

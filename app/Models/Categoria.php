@@ -15,7 +15,7 @@ class Categoria extends Model
 
     protected $fillable = [
         'name',
-        'descricao',
+        'trans',
         'user_id'
     ];
     public function user()
