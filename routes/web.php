@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/add', [EntradaController::class, 'add'])->name('add');
     Route::post('/add_action', [EntradaController::class, 'add_action'])->name('add_action');
+    Route::get('/agendamento', [EntradaController::class, 'inserirDespesasFixas'])->name('fixas');
 
     Route::get('extrado', [EntradaController::class, 'extrado'])->name('extrado');
     Route::get('/extrado/editar/{tipo}/{id}', [EntradaController::class, 'editar'])->name('editar_extrado');

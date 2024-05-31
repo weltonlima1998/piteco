@@ -4,8 +4,8 @@ body {
 	margin: 0;
 	padding: 0;
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
 	background: #94b6cc;
@@ -15,6 +15,8 @@ body {
 	background-position: left bottom -5px;
 	transition: background-color 0.5s ease;
 	box-sizing: border-box;
+	overflow: hidden;
+	padding-top:25px;
 }
 
 .main {
@@ -60,8 +62,10 @@ input {
 	border-bottom: 2px solid black;
 	outline: none;
 	border-radius: 0;
-}input::placeholder{
-	color:#323131;
+}
+
+input::placeholder {
+	color: #323131;
 }
 
 button {
@@ -94,7 +98,7 @@ button:hover {
 	transition: .8s ease-in-out;
 	background-image: url('../img/gif.gif');
 	background-repeat: no-repeat;
-	background-size: contain; 
+	background-size: contain;
 	background-position: center bottom 20px;
 	backface-visibility: 0.5;
 }
@@ -120,15 +124,16 @@ button:hover {
 #chk:checked~body {
 	background: red;
 }
-@media only screen and (max-width: 600px){
-	body{
+
+@media only screen and (max-width: 600px) {
+	body {
 		background-position: center bottom -10px;
 	}
 }
 
 
 .btn {
-	
+
 	position: relative;
 	font-size: 16px;
 	font-weight: 700;
@@ -142,9 +147,9 @@ button:hover {
 	font-family: inherit;
 	text-align: center;
 	transition: .5s ease-in-out;
-   }
-   
-   .btn::before {
+}
+
+.btn::before {
 	content: "";
 	position: absolute;
 	left: 0;
@@ -155,12 +160,22 @@ button:hover {
 	transform: translateX(-100%);
 	transition: all .5s;
 	z-index: -1;
-	color:white;
-   }.btn:hover{
+	color: white;
+}
+
+.btn:hover {
 	background: transparent;
-	color:white
-   }
-   
-   .btn:hover::before {
+	color: white
+}
+
+.btn:hover::before {
 	transform: translateX(0);
-   }
+}
+
+/* FANTASMA */
+svg{
+	width: 100px;
+	height: 100px;
+	transition: 1s;
+
+}
