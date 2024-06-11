@@ -2,14 +2,20 @@
     --bg: #0E0E23;
     --corSite: #04AA6D;
 }
-div{
+
+div {
     .no-select {
-        -webkit-user-select: none; /* Safari */
-        -moz-user-select: none;    /* Firefox */
-        -ms-user-select: none;     /* Internet Explorer/Edge */
-        user-select: none;         /* Non-prefixed version, currently supported by Chrome, Opera and Edge */
+        -webkit-user-select: none;
+        /* Safari */
+        -moz-user-select: none;
+        /* Firefox */
+        -ms-user-select: none;
+        /* Internet Explorer/Edge */
+        user-select: none;
+        /* Non-prefixed version, currently supported by Chrome, Opera and Edge */
     }
 }
+
 body {
     /* Utiliza um degradê linear */
     background: var(--bg);
@@ -20,7 +26,9 @@ body {
     padding: 0;
     overflow-x: hidden;
 
-}h1{
+}
+
+h1 {
     text-transform: uppercase;
 }
 
@@ -197,16 +205,20 @@ textarea.categoria_descricao {
     padding: 10px;
     box-sizing: border-box;
     color: white;
-}.categorias_gerenciar{
+}
+
+.categorias_gerenciar {
     text-decoration: none;
     list-style: none;
     color: #c8c8c8;
     font-size: 15px;
     margin-top: 7px;
 
-}.categorias_info{
+}
+
+.categorias_info {
     font-size: 11px;
-    color: powderblue;    
+    color: powderblue;
 }
 
 /*ADD*/
@@ -321,59 +333,63 @@ audio {
 .mensagem_sucesso p {
     margin: 0px;
     padding: 0px;
-}.checkbox-wrapper{
+}
+
+.checkbox-wrapper {
     margin-top: 10px;
     margin-bottom: -3px;
 }
+
 .checkbox-wrapper input[type="checkbox"] {
     visibility: hidden;
     display: none;
     border: 1px red solid;
-    
-  }
-  
-  .checkbox-wrapper *,
-    .checkbox-wrapper ::after,
-    .checkbox-wrapper ::before {
+
+}
+
+.checkbox-wrapper *,
+.checkbox-wrapper ::after,
+.checkbox-wrapper ::before {
     box-sizing: border-box;
     user-select: none;
     width: 40px;
     height: 40px;
-  }
-  
-  .checkbox-wrapper {
+}
+
+.checkbox-wrapper {
     position: relative;
     display: block;
     overflow: hidden;
-  }
-  
-  .checkbox-wrapper .label {
+}
+
+.checkbox-wrapper .label {
     cursor: pointer;
-  }
-  
-  .checkbox-wrapper .check {
+}
+
+.checkbox-wrapper .check {
     width: 50px;
     height: 50px;
     position: absolute;
     opacity: 0;
-    
-  }
-  
-  .checkbox-wrapper .label svg {
+
+}
+
+.checkbox-wrapper .label svg {
     vertical-align: middle;
-  }
-  
-  .checkbox-wrapper .path1 {
+}
+
+.checkbox-wrapper .path1 {
     stroke-dasharray: 400;
     stroke-dashoffset: 400;
     transition: .5s stroke-dashoffset;
     opacity: 0;
-  }
-  
-  .checkbox-wrapper .check:checked + label svg g path {
+}
+
+.checkbox-wrapper .check:checked+label svg g path {
     stroke-dashoffset: 0;
     opacity: 1;
-  }
+}
+
 /* HOME */
 canvas {
     width: 95%;
@@ -403,21 +419,44 @@ canvas {
 
 .legenda_pizza #saida {
     border: 1px solid #ff4d4d;
+    display: none;
 }
 
 .legenda_pizza #entrada {
     border: 1px solid #2ecc71;
+    display: none;
 }
 
-.porcentagem{
+.porcentagem {
     position: absolute;
     font-size: 40px;
     top: 30%;
-    left:43%;
+    left: 43%;
     opacity: 0;
-    transition:opacity 7s ease;
-}.porcentagem.mostrar{
+    transition: opacity 7s ease;
+}
+
+.porcentagem.mostrar {
     opacity: 1;
+}
+
+.card2 {
+    width: 95%;
+    max-width: 450px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.min_card {
+    background-color: #252954;
+    padding: 10px;
+    border-radius: 10px;
+    border-bottom: 3px solid #2ecc71;
+    cursor: pointer;
+}.min_card.saida{
+    border-bottom:3px solid #ff4d4d;
+}.min_card:hover{
+    color: white;
 }
 
 /* EXTRADO */
@@ -428,9 +467,7 @@ ul.extrado {
     text-decoration: none;
     list-style: none;
     justify-content: center;
-    /* Centraliza verticalmente os itens */
     align-items: center;
-    /* Centraliza horizontalmente os itens */
     padding: 0px;
     margin: 0px;
 }
@@ -478,4 +515,32 @@ ul.extrado .entrada {
     border-color: #2ecc71;
     color: white;
     ;
+}
+
+/* R E L A T O R I O S */
+ul.relatorio {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0;
+    list-style: none;
+}
+
+li.relatorio {
+    width: 100%;
+    border: 2px solid white;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+a.relatorio {
+    color: white;
+    font-weight: bold;
+    font-size: 15pt;
 }

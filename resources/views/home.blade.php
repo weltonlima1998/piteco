@@ -9,14 +9,21 @@
             <div class="legenda_pizza">
                 <div class="">
                     <button value="{{ $entrada }}" id="entrada">R$ {{ $entrada }}</button>
-                    <label for="">Entrada</label>
                 </div>
                 <div>
-                    <button value="{{ $saida }}" id="saida">R$ {{ $saida }}</button>
-                    <label for="">Saida</label>
+                    <button value="{{ $saida }}" id="saida">R$ {{ $saida }}</button>                 
                 </div>
             </div>
             <h2 class="porcentagem">{{ $porcentagem }}%</h2>
+        </div>
+        <div class="card2">
+           
+            <div class="min_card">
+                R$: {{ $entrada }}
+            </div>
+            <div class="min_card saida">
+                R$: {{ $saida }}
+            </div>
         </div>
     </div>
 </x-layout>

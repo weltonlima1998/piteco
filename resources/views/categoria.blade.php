@@ -26,24 +26,5 @@
         </div>
     @endif
     </div>
-    <script>
-        const checkbox = document.getElementById('fluxo');
-        const saida = document.querySelector('.saida');
-        const entrada = document.querySelector('.entrada');
 
-        entrada.addEventListener('click', function() {
-            checkbox.checked = true;
-        });
-        saida.addEventListener('click', function() {
-            checkbox.checked = false;
-        });
-        var mensagemSucesso = document.getElementById("mensagem_sucesso");
-
-    if (mensagemSucesso) {
-        setTimeout(function () {
-            mensagemSucesso.style.transition = "opacity 0.5s ease"; // Define a transição suave da opacidade
-            mensagemSucesso.style.opacity = "0"; // Define a opacidade como 0 (totalmente transparente)
-        }, 3000);
-    }
-    </script>
 </x-layout>

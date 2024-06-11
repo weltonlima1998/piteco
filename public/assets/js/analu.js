@@ -1,7 +1,7 @@
 var url = window.location.href;
 url = url.split("/");
 url = url[url.length - 1];
-console.log(url);
+console.url
 if (!url) {
     document.addEventListener("DOMContentLoaded", function () {
         var porcentagem = document.querySelector(".porcentagem");
@@ -43,6 +43,24 @@ if (!url) {
     document.getElementById("bt_add").style.display = "none";
 } else if (url == "categoria") {
     document.getElementById("categoria").classList.add("check_icon");
+    const checkbox = document.getElementById("fluxo");
+    const saida = document.querySelector(".saida");
+    const entrada = document.querySelector(".entrada");
+
+    entrada.addEventListener("click", function () {
+        checkbox.checked = true;
+    });
+    saida.addEventListener("click", function () {
+        checkbox.checked = false;
+    });
+    var mensagemSucesso = document.getElementById("mensagem_sucesso");
+
+    if (mensagemSucesso) {
+        setTimeout(function () {
+            mensagemSucesso.style.transition = "opacity 0.5s ease"; // Define a transição suave da opacidade
+            mensagemSucesso.style.opacity = "0"; // Define a opacidade como 0 (totalmente transparente)
+        }, 3000);
+    }
 } else if (url == "extrado") {
     document.getElementById("report").classList.add("check_icon");
     document.addEventListener("DOMContentLoaded", function () {
@@ -55,9 +73,11 @@ if (!url) {
             }, 3000);
         }
     });
+} else if(url == "relatorio"){
+    document.getElementById('dashbord').classList.add('check_icon');
 }
 
-// Função para formatar o número como moeda
+ //*Função para formatar o número como moeda
 function formatarMoeda(valor) {
     return valor.toLocaleString("pt-BR", {
         style: "currency",

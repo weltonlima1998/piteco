@@ -27,7 +27,7 @@
         <a href="{{ route('add') }}" class="bt_add_content">+</a>
     </div>
     <footer>
-        <a href="" class="a_icon_menu" id="dashbord">
+        <a href="{{ route('relatorio') }}" class="a_icon_menu" id="dashbord">
             <img src="{{ asset('assets/img/icons/dashbord_icon.png') }}" alt="" class="img_icon_menu ">
         </a>
         <a href="{{ route('categoria') }}" class="a_icon_menu" id="categoria">

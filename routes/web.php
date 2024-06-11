@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\EntradaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RelatorioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('extrado', [EntradaController::class, 'extrado'])->name('extrado');
     Route::get('/extrado/editar/{tipo}/{id}', [EntradaController::class, 'editar'])->name('editar_extrado');
     Route::get('/extrado/excluir/{tipo}/{id}', [EntradaController::class, 'excluir'])->name('excluir_extrado');
+
+    Route::get('relatorio', [RelatorioController::class, 'index'])->name('relatorio');
+    Route::get('relatorio/{mes}',[RelatorioController::class, 'show'])->name('relatorio.show');
+
+
 });
 
 
